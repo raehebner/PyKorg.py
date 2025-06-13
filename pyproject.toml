@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyKorg"
+version = "0.0.0"
+description = "Work in progress Python port of Julia's spectral synthesis package, Korg."
+# Optional, but recommended to set the authors field
+authors = [
+    {name="Roland Hebner"} {email="raehebner@gmail.com"}
+]
+dependencies = [
+    "re"
+]
+requires-python = ">=3.12"
+
+[tool.setuptools.packages.find]
+include = ["PyKorg*"]
