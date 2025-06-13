@@ -1,4 +1,4 @@
-global atomic_symbols
+global atomic_symbols #note: I dont think it actually matters that I make these global variables. 
 atomic_symbols = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
     "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca",
     "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn",
