@@ -28,6 +28,7 @@ atomic_masses = [x * 1.6605402e-24 for x in
     175.0, 178.5, 181.0, 183.9, 186.2, 190.2, 192.2, 195.1, 197.0, 200.6,
     204.4, 207.2, 209.0, 210.0, 210.0, 222.0, 223.0, 226.0, 227.0, 232.0,
     231.0, 238.0]] #,237.0,244.0,243.0] amu_cgs
+    # note: this should use constants.amu_cgs, but I have yet to impliment that
 
 #solar/meteoritic abundances per Asplund et al. (2009, Ann. Rev. Ast. Ap., 47, 481).
 global asplund_2009_solar_abundances
