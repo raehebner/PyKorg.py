@@ -259,7 +259,6 @@ def all_atomic_species():
 
 #things to consider: 
 # to include negative charges/more charges in all_atomic_species
-# ending spaces after + or - will error out (this may be true in julia as well)
 # cannot return things off of initializing a class as with in julia structs
 # using numpy arrays rather than lists
 # making get_atoms, etc. into functions removed from the classes
