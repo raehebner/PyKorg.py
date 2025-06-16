@@ -8,7 +8,7 @@ version = "0.0.0"
 description = "Work in progress Python port of Julia's spectral synthesis package, Korg."
 # Optional, but recommended to set the authors field
 authors = [
-    {name="Roland Hebner"} {email="raehebner@gmail.com"}
+    {name="Roland Hebner"}, {email="raehebner@gmail.com"}
 ]
 dependencies = [
     "re"
