@@ -1,4 +1,5 @@
-global atomic_symbols #note: I dont think it actually matters that these are global variables. 
+from .constants import amu_cgs
+
 atomic_symbols = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
     "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca",
     "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn",
@@ -10,14 +11,11 @@ atomic_symbols = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
     "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th",
     "Pa", "U"] #,"Np","Pu","Am"] # we don't have partition funcs for these last three
 
-global MAX_ATOMIC_NUMBER
 MAX_ATOMIC_NUMBER = len(atomic_symbols)
-global atomic_numbers
 atomic_numbers = {x: atomic_symbols.index(x)+1 for x in atomic_symbols}
 
 #in grams
-global atomic_masses
-atomic_masses = [x * 1.6605402e-24 for x in 
+atomic_masses = [x * amu_cgs for x in 
     [1.008, 4.003, 6.941, 9.012, 10.81, 12.01, 14.01, 16.00, 19.00, 20.18,
     22.99, 24.31, 26.98, 28.08, 30.97, 32.06, 35.45, 39.95, 39.10, 40.08,
     44.96, 47.90, 50.94, 52.00, 54.94, 55.85, 58.93, 58.71, 63.55, 65.37,
@@ -27,11 +25,9 @@ atomic_masses = [x * 1.6605402e-24 for x in
     145.0, 150.4, 152.0, 157.3, 158.9, 162.5, 164.9, 167.3, 168.9, 173.0,
     175.0, 178.5, 181.0, 183.9, 186.2, 190.2, 192.2, 195.1, 197.0, 200.6,
     204.4, 207.2, 209.0, 210.0, 210.0, 222.0, 223.0, 226.0, 227.0, 232.0,
-    231.0, 238.0]] #,237.0,244.0,243.0] amu_cgs
-    # note: this should use constants.amu_cgs, but I have yet to impliment that
+    231.0, 238.0]] #,237.0,244.0,243.0] 
 
 #solar/meteoritic abundances per Asplund et al. (2009, Ann. Rev. Ast. Ap., 47, 481).
-global asplund_2009_solar_abundances
 asplund_2009_solar_abundances = [
     12.00, 10.93, 1.05, 1.38, 2.70, 8.43, 7.83, 8.69, 4.56, 7.93,
     6.24, 7.60, 6.45, 7.51, 5.41, 7.12, 5.50, 6.40, 5.03, 6.34,
@@ -45,7 +41,6 @@ asplund_2009_solar_abundances = [
     -5.00, -0.54]#,-5.00,-5.00,-5.00]
 
 #solar/meteoritic abundances per Asplund et al. A&A 653, A141 (2021)
-global asplund_2020_solar_abundances
 asplund_2020_solar_abundances = [
     12.00, 10.91, 0.96, 1.38, 2.70, 8.46, 7.83, 8.69, 4.40, 8.06,
     6.22, 7.55, 6.43, 7.51, 5.41, 7.12, 5.31, 6.38, 5.07, 6.30,
@@ -59,7 +54,6 @@ asplund_2020_solar_abundances = [
     -5.00, -0.54]
 
 #solar abundances per Grevesse et al. Space Sci Rev (2007) 130: 105–114
-global grevesse_2007_solar_abundances
 grevesse_2007_solar_abundances = [
     12.00, 10.93, 1.05, 1.38, 2.70, 8.39, 7.78, 8.66, 4.56, 7.84,
     6.17, 7.53, 6.37, 7.51, 5.36, 7.14, 5.50, 6.18, 5.08, 6.31,
@@ -73,7 +67,6 @@ grevesse_2007_solar_abundances = [
     -05.00, -0.52]
 
 #solar abundances per Magg et al. A&A 661, A140 (2022)
-global magg_2022_solar_abundances
 magg_2022_solar_abundances = [12.0, 10.94, 3.31, 1.44, 2.8, 8.56, 7.98, 8.77, 4.4, 8.15, 6.29,
     7.55, 6.43, 7.59, 5.41, 7.16, 5.25, 6.5,
     5.14, 6.37, 3.07, 4.94, 3.89, 5.74, 5.52, 7.5, 4.95, 6.24, 4.292, 4.658, 3.126, 3.651, 2.355,
@@ -86,5 +79,4 @@ magg_2022_solar_abundances = [12.0, 10.94, 3.31, 1.44, 2.8, 8.56, 7.98, 8.77, 4.
     0.836,
     2.083, 0.712, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, 0.116, -5.0, -0.461]
 
-global default_solar_abundances
 default_solar_abundances = asplund_2020_solar_abundances
