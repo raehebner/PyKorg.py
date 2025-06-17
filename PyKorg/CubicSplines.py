@@ -51,7 +51,7 @@ class CubicSpline:
 		"""
 		CubicSpline.interpolate(x)
 
-	    Returns an interpolated value using the Cubic Spline at any x value in the domain.
+	    	Returns an interpolated value using the Cubic Spline at any x value in the domain.
 
 		If `CubicSpline.extrapolate` is false, x values outside [`xs[1]`, `xs[end]`] throw errors, if `CubicSpline.extrapolate` is
 		true, the interpolant uses flat extrapolation, i.e. it returns the extreme value.
@@ -73,7 +73,7 @@ class CubicSpline:
 
 	def cumulative_integral(self,t1,t2):
 		"""
-    	CubicSpline.cumulative_integral(t1, t2)
+    		CubicSpline.cumulative_integral(t1, t2)
 
 		Given a curve described by the spline, calculates the integral from t1 to t2 for all t = t1, t2, and
 		all spline knots in between.  So if `t1` is `CubicSpline.t[0]` and `t2` is `CubicSpline.t[-1]`, `out` should have the
