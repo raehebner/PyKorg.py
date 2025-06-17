@@ -109,7 +109,7 @@ class CubicSpline:
 
 def construct_spline(t,u,extrapolate=False):
 	"""
-    CubicSpline(xs, ys, extrapolate=false)
+	construct_spline(xs, ys, extrapolate=false)
 
 	Construct a interpolant using `xs` and `ys` as the knot coordinates. Assumes `xs` is sorted. 
 
