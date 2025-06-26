@@ -45,16 +45,16 @@ class Formula:
                     raise ValueError(f"Can't construct a Formula with atoms {code}. Maximum length is {MAX_ATOMS_PER_MOLECULE}.")
 
             else:
-                subcode = findall(r'[A-Z0-9]',code)
+                subcode = findall(r'[A-Z][a-z]*|\d+',code)
                 self.atoms = []
                 for s in subcode:
-                    try:
-                        int(s)
+                    if s.isdigit():
                         previous = self.atoms[-1]
                         for _ in range(int(s)-1):
                             self.atoms.append(previous)
-                    except:
+                    else:
                         self.atoms.append(atomic_numbers[s])
+                    
                 if len(self.atoms) > MAX_ATOMS_PER_MOLECULE:
                             raise ValueError(f"Can't construct a Formula with atoms {code}. Maximum length is {MAX_ATOMS_PER_MOLECULE}.")
                 else:
