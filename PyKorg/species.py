@@ -66,7 +66,20 @@ class Formula:
     
         self.atoms.sort()
 
+    def __hash__(self):
+        return hash(tuple(self.atoms))
 
+    def __eq__(self, other):
+        if not (isinstance(other,Formula)):
+            return False
+        return self.atoms == other.atoms
+
+    def __str__(self):
+        return f'{self.atoms}'
+
+    def __repr__(self):
+        return f'Formula(atoms={self.atoms})'
+    
     def get_atoms(self):
         '''
         `Formula.get_atoms()` returns a list of the nonzero atomic numbers in 'Formula.atoms'. 
@@ -196,6 +209,20 @@ class Species:
         else:
             raise TypeError(f"Species expects a formula and charge, or a string encoding both. Recieved {code}")
 
+    def __hash__(self):
+        return hash((self.formula,self.charge))
+
+    def __eq__(self, other):
+        if not (isinstance(other,Species)):
+            return False
+        return self.formula == other.formula and self.charge == other.charge
+
+    def __str__(self):
+        return f'{self.formula} {self.charge}'
+
+    def __repr__(self):
+        return f'Species(formula={self.formula}, charge={self.charge})'
+    
     def ismolecule(self):
         '''
         `Species.ismolecule()` returns true if there is more than one atom in the species.  
