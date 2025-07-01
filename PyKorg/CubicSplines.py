@@ -40,6 +40,20 @@ class CubicSpline:
 		self.z = z
 		self.extrapolate = extrapolate
 
+	def __hash__(self):
+		return hash((self.t,self.u,self.h,self.z,self.extrapolate))
+
+	def __eq__(self, other):
+		if not (isinstance(other,CubicSpline)):
+			return False
+		return self.t == other.t and self.u == other.u and self.h == other.h and self.z == other.z and self.extrapolate == other.extrapolate
+
+	def __str__(self):
+		return f'{self.t} {self.u} {self.h} {self.z} {self.extrapolate}'
+
+	def __repr__(self):
+		return f'CubicSpline(t={self.t}, u={self.u}, h={self.h}, z={self.z}, extrapolate={self.extrapolate})'
+	
 	def show(self):
 		print("t:",self.t)
 		print("u:",self.u)
