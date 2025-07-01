@@ -23,7 +23,7 @@ def setup_ionization_energies(fname=joinpath(_data_dir,"barklem_collet_2016","Ba
 			if line[0] != '#':
 				toks = line.split()
 				Z = toks[0]
-				d[Z] = toks[2:]
+				d[Z] = [float(i) for i in toks[2:]]
 	return d
 
 def setup_partition_funcs_and_equilibrium_constants():
