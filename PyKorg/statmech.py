@@ -30,12 +30,12 @@ def saha_ion_weights(T, nₑ, atom, ionization_energies, partition_funcs):
     k = kboltz_eV
     transU = translational_U(electron_mass_cgs, T)
 
-    wII = 2.0 / nₑ * (UII / UI) * transU * exp(-χI / (k * T))
+    wII = 2.0 / nₑ * (UII / UI) * transU * np.exp(-χI / (k * T))
     if atom == Formula(1) # hydrogen
         wIII = 0.0
     else
         UIII = partition_funcs[Species(atom, 2)](np.log(T))
-        wIII = wII * 2.0 / nₑ * (UIII / UII) * transU * exp(-χII / (k * T))
+        wIII = wII * 2.0 / nₑ * (UIII / UII) * transU * np.exp(-χII / (k * T))
     
     return wII, wIII
 
@@ -146,11 +146,11 @@ def chemical_equilibrium(temp, nₜ, model_atm_nₑ, absolute_abundances, ioniza
     for mol in log_equilibrium_constants.keys():
         log_nK = get_log_nK(mol, temp, log_equilibrium_constants)
         if mol.charge == 0:
-            element_log_ns = (log10(number_densities[Species(Formula(el), 0)]) for el in mol.formula.get_atoms())
+            element_log_ns = (np.log10(number_densities[Species(Formula(el), 0)]) for el in mol.formula.get_atoms())
         else: # singly ionized diatomic
             Z1, Z2 = mol.formula.get_atoms()
             # the first atom has the lower atomic number.  That is the charged component for out Ks.
-            element_log_ns = (log10(number_densities[Species(Formula(Z1), 1)]), log10(number_densities[Species(Formula(Z2), 0)]))
+            element_log_ns = (np.log10(number_densities[Species(Formula(Z1), 1)]), np.log10(number_densities[Species(Formula(Z2), 0)]))
         
         number_densities[mol] = 10**(sum(*element_log_ns) - log_nK)
 
