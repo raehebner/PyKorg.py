@@ -9,7 +9,7 @@ import numpy as np
 import h5py
 
 
-_data_dir='PyKorg\\data'
+_data_dir='PyKorg.py\\data'
 
 def setup_ionization_energies(fname=joinpath(_data_dir,"barklem_collet_2016","BarklemCollet2016-ionization_energies.dat")):
 	'''
