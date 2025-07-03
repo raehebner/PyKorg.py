@@ -218,16 +218,30 @@ class Species:
         return self.formula == other.formula and self.charge == other.charge
 
     def __str__(self):
-        try:
-            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(roman_numerals[self.charge-1])
-        except:
-            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(self.charge)
+        display = ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "
+        if self.ismolecule() and self.charge == 1:
+            return display+"+"
+        elif self.ismolecule() and self.charge == 0:
+            return display
+        elif 0 <= self.charge <= len(roman_numerals) - 1:
+            return display+roman_numerals[self.charge]
+        elif self.charge == -1:
+            return display+"-"
+        else:
+            return display+str(self.charge)
 
     def __repr__(self):
-        try:
-            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(roman_numerals[self.charge-1])
-        except:
-            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(self.charge)
+        display = ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "
+        if self.ismolecule() and self.charge == 1:
+            return display+"+"
+        elif self.ismolecule() and self.charge == 0:
+            return display
+        elif 0 <= self.charge <= len(roman_numerals) - 1:
+            return display+roman_numerals[self.charge]
+        elif self.charge == -1:
+            return display+"-"
+        else:
+            return display+str(self.charge)
     
     def ismolecule(self):
         '''
