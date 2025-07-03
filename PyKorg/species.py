@@ -75,10 +75,10 @@ class Formula:
         return self.atoms == other.atoms
 
     def __str__(self):
-        return f'{self.atoms}'
+        return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))
 
     def __repr__(self):
-        return f'Formula(atoms={self.atoms})'
+        return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))
     
     def get_atoms(self):
         '''
@@ -218,10 +218,16 @@ class Species:
         return self.formula == other.formula and self.charge == other.charge
 
     def __str__(self):
-        return f'{self.formula} {self.charge}'
+        try:
+            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(roman_numerals[self.charge-1])
+        except:
+            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(self.charge)
 
     def __repr__(self):
-        return f'Species(formula={self.formula}, charge={self.charge})'
+        try:
+            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(roman_numerals[self.charge-1])
+        except:
+            return ''.join(map(lambda x:str(atomic_symbols[x-1]),self.get_atoms()))+" "+str(self.charge)
     
     def ismolecule(self):
         '''
