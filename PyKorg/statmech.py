@@ -31,9 +31,9 @@ def saha_ion_weights(T, nₑ, atom, ionization_energies, partition_funcs):
     transU = translational_U(electron_mass_cgs, T)
 
     wII = 2.0 / nₑ * (UII / UI) * transU * np.exp(-χI / (k * T))
-    if atom == Formula(1) # hydrogen
+    if atom == Formula(1): # hydrogen
         wIII = 0.0
-    else
+    else:
         UIII = partition_funcs[Species(atom, 2)](np.log(T))
         wIII = wII * 2.0 / nₑ * (UIII / UII) * transU * np.exp(-χII / (k * T))
     
