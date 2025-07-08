@@ -273,7 +273,7 @@ def setup_chemical_equilibrium_residuals(T, nₜ, absolute_abundances, ionizatio
         F[1:-2] /= atom_number_densities
         F[-1] /= nₑ * 1e-5
 
-def hummer_mihalas_w(T, n_eff, nH, nHe, ne, use_hubeny_generalization=false):
+def hummer_mihalas_w(T, n_eff, nH, nHe, ne, use_hubeny_generalization=False):
     """
     hummer_mihalas_w(T, n_eff, nH, nHe, ne; use_hubeny_generalization=false)
 
@@ -361,7 +361,7 @@ def hummer_mihalas_w(T, n_eff, nH, nHe, ne, use_hubeny_generalization=false):
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-def hummer_mihalas_U_H(T, nH, nHe, ne, use_hubeny_generalization=false):
+def hummer_mihalas_U_H(T, nH, nHe, ne, use_hubeny_generalization=False):
     """
     hummer_mihalas_U_H(T, nH, nHe, ne)
 
