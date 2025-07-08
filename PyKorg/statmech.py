@@ -273,7 +273,7 @@ def setup_chemical_equilibrium_residuals(T, nₜ, absolute_abundances, ionizatio
         F[1:-2] /= atom_number_densities
         F[-1] /= nₑ * 1e-5
 
-def hummer_mihalas_w(T, n_eff, nH, nHe, ne; use_hubeny_generalization=false):
+def hummer_mihalas_w(T, n_eff, nH, nHe, ne, use_hubeny_generalization=false):
     """
     hummer_mihalas_w(T, n_eff, nH, nHe, ne; use_hubeny_generalization=false)
 
@@ -299,8 +299,7 @@ def hummer_mihalas_w(T, n_eff, nH, nHe, ne; use_hubeny_generalization=false):
     # this is sqrt<r^2> assuming l=0.  I'm unclear why this is the approximation barklem uses.
     r_level = np.sqrt(5 / 2 * n_eff**4 + 1 / 2 * n_eff**2) * bohr_radius_cgs
     # how do I reproduce this helium radius?
-    neutral_term = nH * (r_level + np.sqrt(3) * bohr_radius_cgs)**3 +
-                   nHe * (r_level + 1.02*bohr_radius_cgs)**3
+    neutral_term = nH * (r_level + np.sqrt(3) * bohr_radius_cgs)**3 + nHe * (r_level + 1.02*bohr_radius_cgs)**3
 
     # contributions to w from ions (these are assumed to be all singly ionized, so n_ion = n_e)
     # K is a  QM correction defined in H&M '88 equation 4.24
@@ -319,11 +318,11 @@ def hummer_mihalas_w(T, n_eff, nH, nHe, ne; use_hubeny_generalization=false):
             X = np.exp(3.15 * np.log(1 + A))
             BETAC = 8.3e14 * np.exp(-0.66667 * np.log(ne)) * K / n_eff^4
             F = 0.1402 * X * BETAC^3 / (1 + 0.1285 * X * BETAC * np.sqrt(BETAC))
-            charged_term = np.log(F / (1 + F)) / (-4π / 3)
-        else
+            charged_term = np.log(F / (1 + F)) / (-4*np.pi / 3)
+        else:
             charged_term = 0
         
-    else
+    else:
         charged_term = 16 * ((e^2) / (χ * sqrt(K)))^3 * ne
     
 
