@@ -225,7 +225,7 @@ def setup_chemical_equilibrium_residuals(T, nₜ, absolute_abundances, ionizatio
 
     #`residuals` puts the residuals the system of molecular equilibrium equations in `F`
     #`x` is a vector containing the number density of the neutral species of each element
-    def residuals(F, x)
+    def residuals(F, x):
         # Don't allow negative number densities.  This is a trick to bound the possible values 
         # of x. Taking the log was less performant in tests.
         nₑ = np.abs(x[-1]) * nₜ * 1e-5
@@ -252,7 +252,7 @@ def setup_chemical_equilibrium_residuals(T, nₜ, absolute_abundances, ionizatio
         # we reuse the variable to save memory
         neutral_number_densities = np.log10(neutral_number_densities)
         for (m, log_nK) in zip(molecules, log_nKs):
-            if m.charge == 1 # chared diatomic
+            if m.charge == 1: # chared diatomic
                 # the first element has a lower atomic number.  That is the charged one.
                 Z1, Z2 = m.get_atoms()
                 wII = wII_ne[Z1] / nₑ
@@ -263,11 +263,11 @@ def setup_chemical_equilibrium_residuals(T, nₜ, absolute_abundances, ionizatio
                 F[Z1] -= n_mol
                 F[Z2] -= n_mol
                 F[-1] += n_mol
-            else # neutral molecule, possibly polyatomic
+            else: # neutral molecule, possibly polyatomic
                 els = m.get_atoms()
                 n_mol = 10**(sum(neutral_number_densities[el] for el in els) - log_nK)
                 # RHS: atoms which are part of molecules
-                for el in els
+                for el in els:
                     F[el] -= n_mol
                 
         F[1:-2] ./= atom_number_densities
