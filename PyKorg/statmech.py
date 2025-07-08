@@ -270,7 +270,7 @@ def setup_chemical_equilibrium_residuals(T, nₜ, absolute_abundances, ionizatio
                 for el in els:
                     F[el] -= n_mol
                 
-        F[1:-2] ./= atom_number_densities
+        F[1:-2] /= atom_number_densities
         F[-1] /= nₑ * 1e-5
 
 def hummer_mihalas_w(T, n_eff, nH, nHe, ne; use_hubeny_generalization=false):
