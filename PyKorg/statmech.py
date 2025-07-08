@@ -361,7 +361,7 @@ def hummer_mihalas_w(T, n_eff, nH, nHe, ne, use_hubeny_generalization=false):
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-def hummer_mihalas_U_H(T, nH, nHe, ne; use_hubeny_generalization=false):
+def hummer_mihalas_U_H(T, nH, nHe, ne, use_hubeny_generalization=false):
     """
     hummer_mihalas_U_H(T, nH, nHe, ne)
 
@@ -583,7 +583,7 @@ def hummer_mihalas_U_H(T, nH, nHe, ne; use_hubeny_generalization=false):
     for E, g, n in zip(hydrogen_energy_levels, hydrogen_energy_level_degeneracies,
                          hydrogen_energy_level_n):
         n_eff = np.sqrt(RydbergH_eV / (RydbergH_eV - E)) # times Z, which is 1 for hydrogen
-        w = hummer_mihalas_w(T, n_eff, nH, nHe, ne;
+        w = hummer_mihalas_w(T, n_eff, nH, nHe, ne,
                              use_hubeny_generalization=use_hubeny_generalization)
         U += w * g * np.exp(-E / (kboltz_eV * T))
     
