@@ -204,7 +204,7 @@ def _solve_chemical_equilibrium(temp, nₜ, absolute_abundances, neutral_fractio
         except e:
             raise ChemicalEquilibriumError(f"solver failed: {e}")
         
-    elif not all(isfinite, sol):
+    if not all(isfinite, sol):
         raise ChemicalEquilibriumError("solution contains non-finite values")
 
     return sol
